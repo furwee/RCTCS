@@ -10,7 +10,7 @@ this project started as a assist of jetracer's operation loop (https://github.co
 - USB micro USB cable (make sure it is not just a power cable)  
 
 ## What is the control loop?
-1: read the IMU's data  
+1: read the IMU's data and get acX, acY and gyZ  
 2: read PWM from the outputs of jetracer (steering and throttle)  
 3: generate a resultant acceleration from acX and acY  
 4: using v = a*t, get velocity via integration (resets to 0 if ESC is 1000uS)  
