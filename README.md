@@ -31,10 +31,7 @@ Follow these steps to set it up:
 2. **Select the Correct Board**
    - *Tools* → *Board* → choose **SparkFun Pro Micro**.
    - *Tools* → *Processor* → select **ATmega32U4 (5V, 16MHz)** or **ATmega32U4 (3.3V, 8MHz)** depending on your hardware.
-
-3. **USB Cable Note**
-   - Ensure you’re using a **data-capable micro USB cable**. Many cheap cables only provide power and will prevent uploads.
-
+   - 
 ---
 
 ## How to set up your IMU (a very primitive way):
