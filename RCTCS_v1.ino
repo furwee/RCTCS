@@ -88,7 +88,7 @@ void loop() {
 
   // reading input from jetson nano
   int servo = constrain(servoIN.getValue(), 1000, 2000);
-  int ESC = constrain(ESCIN.getValue(), 1000, 2000);
+  int ESC = constrain(ESCIN.getValue(), 1500, 2000);
 
   //algorithm(s)
 
@@ -100,7 +100,7 @@ void loop() {
     vel += accXY * 0.01; // v = at
     lastSampleTime = millis();
 
-    if (ESC == 1000) {
+    if (ESC == 1500) { // center point
       vel = 0;
     }
   }
