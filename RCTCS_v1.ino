@@ -125,10 +125,10 @@ void loop() {
   } else if (diff > tolerance) {
     // oversteer, counter-steer and maintain throttle until it is normal again
     servo -= counterSteerStrength * relativeServoCorrectionSteps;
-    ESC = constrain(ESC-throttleCorrectionSteps * 0.2f, 1500, 2000);
+    ESC -= throttleCorrectionSteps * 0.2f;
   }
 
   // output
-  servoOUT.writeMicroseconds(servo);
-  ESCOUT.writeMicroseconds(ESC);  
+  servoOUT.writeMicroseconds(constrain(servo, 1000, 2000));
+  ESCOUT.writeMicroseconds(constrain(ESC,1500, 2000));  
 }
