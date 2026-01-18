@@ -1,7 +1,10 @@
 /*
-PCB AND CODING done by furwee
+Copyright (C) 2026  Jaco Yeung
+RC car traction control system using arduino
 
 SERVO AND ESC USE uS (microseconds) as unit
+accelerometer ouput = ms^-2
+gyro output = rads^-1
 */
 
 // modules to include
