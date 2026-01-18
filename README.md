@@ -1,6 +1,7 @@
 # RCTCS
 ## What is this project about?
 this project started as a assist of jetracer's operation loop (https://github.com/NVIDIA-AI-IOT/jetracer) for competition but slowly outgrew its original purpose to also become a Traction Control System (TCS). Hence the name.  
+![pcb product](https://github.com/furwee/RCTCS/blob/master/asset/20260118_124929.jpg)  
 
 ## What do i need to prepare?
 - a SparkFun Pro Micro
