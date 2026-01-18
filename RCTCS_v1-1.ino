@@ -52,6 +52,8 @@ int throttleCorrectionSteps = 100; // value between 1-500
 float counterSteerStrength = 1.5;
 float alpha = 0.005;
 float tolerance = 0.2;
+float velThreshold = 6;
+
 
 void setup() {
     while (!IMU.begin_I2C()){
@@ -99,14 +101,10 @@ void loop() {
   if (millis() - lastSampleTime > 10) {
     vel += accXY * 0.01; // v = at
     lastSampleTime = millis();
-
-    if (ESC == 1500) { // center point
-      vel = 0;
-    }
   }
 
   // clock led
-  digitalWrite(RXLED, millis()%500>250); // https://www.reddit.com/r/arduino/comments/n1suiz/led_blink_no_delay_one_line_of_code/ <- VERY USEFUL TO TELL IF ITS WORKING
+  // digitalWrite(RXLED, millis()%500>10); // https://www.reddit.com/r/arduino/comments/n1suiz/led_blink_no_delay_one_line_of_code/ <- VERY USEFUL TO TELL IF ITS WORKING
 
   // converted from https://www.desmos.com/calculator/n14dt2nzrk
   float kvel = 1/(1- alpha * vel); // ln 53
@@ -121,7 +119,9 @@ void loop() {
   if (diff < -tolerance) { // refer to ln 54
     //understeer, reduce throttle and add steering
     servo += relativeServoCorrectionSteps; 
-    ESC -= throttleCorrectionSteps; // refer from ln 49
+
+    ESC = (vel >= velThreshold) ? ESC -= throttleCorrectionSteps : ESC += throttleCorrectionSteps; // refer to ln 51, handles both high speed understeer olr low speed understeer
+  
   } else if (diff > tolerance) {
     // oversteer, counter-steer and maintain throttle until it is normal again
     servo -= counterSteerStrength * relativeServoCorrectionSteps;
@@ -130,5 +130,5 @@ void loop() {
 
   // output
   servoOUT.writeMicroseconds(constrain(servo, 1000, 2000));
-  ESCOUT.writeMicroseconds(constrain(ESC,1500, 2000));  
+  ESCOUT.writeMicroseconds(constrain(ESC, 1500, 2000));  
 }
