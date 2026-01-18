@@ -7,8 +7,10 @@ this project started as a assist of jetracer's operation loop (https://github.co
 - a SparkFun Pro Micro
 - Adafruit LSM6DS3TR-C + LIS3MDL - Precision 9 DoF IMU (5543)
 - Breadboard w/ wires and a button
-- alternatively, get yourself a PCB w/ soldering equipment and a 5x5x1.2mm smd button of your own choice
-- USB micro USB cable (make sure it is not just a power cable)  
+- alternatively, get yourself a PCB w/ soldering equipment and a 5x5x1.2mm smd button of your own choice (for quick reset)
+- USB micro USB cable (make sure it is not just a power cable)
+- 4 m2.5*8mm screw with individual nuts if you are going for pcb
+- a couple pin headers
 
 ## What is the control loop?
 1: read the IMU's data and get acX, acY and gyZ  
@@ -22,7 +24,7 @@ this project started as a assist of jetracer's operation loop (https://github.co
 
 ## What is included in this repository?
 - the arduino code (duh)
-- the schematic and the gerber files of the pcb
+- the schematic of the [pcb](https://github.com/furwee/RCTCS/blob/master/asset/SCH_hidden_gyro_1-hidden_gyro_2026-01-18.svg)
 
 ## What are the dependencies of this code?
 - Adafruit_LSM6DS33.h
