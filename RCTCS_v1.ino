@@ -125,7 +125,7 @@ void loop() {
   } else if (diff > tolerance) {
     // oversteer, counter-steer and maintain throttle until it is normal again
     servo -= counterSteerStrength * relativeServoCorrectionSteps;
-    ESC -= throttleCorrectionSteps * 0.2f;
+    ESC = constrain(ESC-throttleCorrectionSteps * 0.2f, 1500, 2000);
   }
 
   // output
